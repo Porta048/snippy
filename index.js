@@ -1,10 +1,11 @@
-const inquirer = require('inquirer');
-const fs = require('fs-extra');
-const path = require('path');
-const chalk = require('chalk');
+import inquirer from 'inquirer';
+import fs from 'fs-extra';
+import path from 'path';
+import chalk from 'chalk'; // Modificata l'importazione di chalk
+import { v4 as uuidv4 } from 'uuid';
 
-const SNIPPETS_FILE = path.join(__dirname, 'snippets.json');
-
+const SNIPPETS_FILE = path.join(process.cwd(), 'snippets.json');
+// Note: __dirname is not available in ES modules, process.cwd() is often a suitable alternative depending on context.
 // Assicura che il file snippets.json esista
 async function ensureSnippetsFile() {
     try {
@@ -58,6 +59,12 @@ async function addSnippet() {
             default: 'js'
         },
         {
+            type: 'input',
+            name: 'tags',
+            message: chalk.cyan('Etichette (separate da virgole, es. "funzione, utility"):'),
+            default: ''
+        },
+        {
             type: 'editor',
             name: 'code',
             message: chalk.cyan('Incolla o scrivi il tuo codice (si aprirà un editor):'),
@@ -65,13 +72,16 @@ async function addSnippet() {
         }
     ]);
 
+    const tagsArray = answers.tags.split(',').map(tag => tag.trim()).filter(tag => tag !== '');
+
     const snippets = await loadSnippets();
     snippets.push({
         id: Date.now().toString(), // ID unico basato sul timestamp
         name: answers.name,
         language: answers.language.toLowerCase(),
         code: answers.code,
-        createdAt: new Date().toISOString()
+        createdAt: new Date().toISOString(),
+        tags: tagsArray // Aggiungiamo le etichette qui
     });
     await saveSnippets(snippets);
     console.log(chalk.green('Snippet aggiunto con successo!'));
@@ -89,6 +99,9 @@ async function listSnippets() {
         console.log(chalk.yellow(`--- SNIPPET #${index + 1} (ID: ${snippet.id}) ---`));
         console.log(chalk.blue(`Nome: ${snippet.name}`));
         console.log(chalk.blue(`Linguaggio: ${snippet.language}`));
+        if (snippet.tags && snippet.tags.length > 0) {
+            console.log(chalk.blue(`Etichette: ${snippet.tags.join(', ')}`));
+        }
         console.log(chalk.blue(`Creato il: ${new Date(snippet.createdAt).toLocaleString()}`));
         console.log(chalk.green('```' + snippet.language));
         console.log(snippet.code);
@@ -108,7 +121,7 @@ async function searchSnippets() {
     const { searchTerm } = await inquirer.prompt({
         type: 'input',
         name: 'searchTerm',
-        message: chalk.cyan('Cerca per nome, linguaggio o contenuto del codice:'),
+        message: chalk.cyan('Cerca per nome, linguaggio, etichette o contenuto del codice:'),
         validate: input => input ? true : 'Il termine di ricerca non può essere vuoto!'
     });
 
@@ -117,7 +130,8 @@ async function searchSnippets() {
     const results = snippets.filter(snippet =>
         snippet.name.toLowerCase().includes(lowerCaseSearchTerm) ||
         snippet.language.toLowerCase().includes(lowerCaseSearchTerm) ||
-        snippet.code.toLowerCase().includes(lowerCaseSearchTerm)
+        snippet.code.toLowerCase().includes(lowerCaseSearchTerm) ||
+        (snippet.tags && snippet.tags.some(tag => tag.toLowerCase().includes(lowerCaseSearchTerm)))
     );
 
     if (results.length === 0) {
@@ -130,6 +144,9 @@ async function searchSnippets() {
         console.log(chalk.yellow(`--- SNIPPET #${index + 1} (ID: ${snippet.id}) ---`));
         console.log(chalk.blue(`Nome: ${snippet.name}`));
         console.log(chalk.blue(`Linguaggio: ${snippet.language}`));
+        if (snippet.tags && snippet.tags.length > 0) {
+            console.log(chalk.blue(`Etichette: ${snippet.tags.join(', ')}`));
+        }
         console.log(chalk.blue(`Creato il: ${new Date(snippet.createdAt).toLocaleString()}`));
         console.log(chalk.green('```' + snippet.language));
         console.log(snippet.code);
@@ -210,6 +227,12 @@ async function editSnippet() {
             default: snippetToEdit.language
         },
         {
+            type: 'input',
+            name: 'tags',
+            message: chalk.cyan('Nuove etichette (separate da virgole, lascia vuoto per non modificare):'),
+            default: snippetToEdit.tags ? snippetToEdit.tags.join(', ') : ''
+        },
+        {
             type: 'editor',
             name: 'code',
             message: chalk.cyan('Modifica il codice (si aprirà un editor, premi Ctrl+D per salvare/chiudere):'),
@@ -220,6 +243,10 @@ async function editSnippet() {
     snippetToEdit.name = answers.name || snippetToEdit.name;
     snippetToEdit.language = (answers.language || snippetToEdit.language).toLowerCase();
     snippetToEdit.code = answers.code || snippetToEdit.code;
+    if (answers.tags !== undefined) {
+        snippetToEdit.tags = answers.tags.split(',').map(tag => tag.trim()).filter(tag => tag !== '');
+    }
+
 
     await saveSnippets(snippets);
     console.log(chalk.green('Snippet modificato con successo!'));
