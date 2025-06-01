@@ -2,37 +2,37 @@
 
 ![Snippi Logo](src/assets/logo00.jpg)
 
-## 📋 Descrizione
+##  Descrizione
 
 Snippi è un'applicazione web moderna e intuitiva per la gestione dei tuoi snippet di codice. Organizza, cerca e riutilizza facilmente i tuoi frammenti di codice preferiti con un'interfaccia elegante e funzionale.
 
-## ✨ Caratteristiche Principali
+##  Caratteristiche Principali
 
-### 🎨 Design Moderno
+###  Design Moderno
 - **Interfaccia Dark Mode**: Design elegante con tema scuro per ridurre l'affaticamento degli occhi
 - **Glassmorphism Effects**: Effetti di vetro smerigliato per un look moderno e professionale
 - **Animazioni Fluide**: Transizioni e animazioni smooth per un'esperienza utente coinvolgente
 - **Responsive Design**: Perfettamente ottimizzato per desktop, tablet e mobile
 
-### 🔍 Ricerca e Filtri Avanzati
+###  Ricerca e Filtri Avanzati
 - **Ricerca Intelligente**: Cerca per nome, contenuto del codice o tag
 - **Filtri per Linguaggio**: Filtra gli snippet per linguaggio di programmazione
 - **Filtri per Tag**: Organizza e trova snippet tramite tag personalizzati
 - **Filtri Attivi Visibili**: Visualizzazione chiara dei filtri applicati con possibilità di rimozione rapida
 
-### 📝 Gestione Snippet
+###  Gestione Snippet
 - **Creazione Facile**: Modal intuitivo per aggiungere nuovi snippet
 - **Modifica Rapida**: Modifica gli snippet esistenti con un click
 - **Eliminazione Sicura**: Conferma prima dell'eliminazione per evitare perdite accidentali
 - **Copia Istantanea**: Copia il codice negli appunti con feedback visivo
 
-### 🏷️ Organizzazione
+###  Organizzazione
 - **Tag Multipli**: Aggiungi più tag per categorizzare i tuoi snippet
 - **Linguaggi Supportati**: Supporto per tutti i principali linguaggi di programmazione
 - **Contatore Caratteri**: Visualizzazione in tempo reale della lunghezza del codice
 - **Data di Creazione**: Tracciamento automatico della data di creazione
 
-## 🚀 Tecnologie Utilizzate
+##  Tecnologie Utilizzate
 
 - **React 18**: Framework JavaScript moderno per l'interfaccia utente
 - **Tailwind CSS**: Framework CSS utility-first per styling rapido e consistente
@@ -40,7 +40,7 @@ Snippi è un'applicazione web moderna e intuitiva per la gestione dei tuoi snipp
 - **SVG Icons**: Icone vettoriali scalabili per una grafica nitida
 - **CSS Animations**: Animazioni CSS personalizzate per effetti fluidi
 
-## 📁 Struttura del Progetto
+##  Struttura del Progetto
 
 ```
 snippy/
@@ -65,7 +65,7 @@ snippy/
 └── README.md
 ```
 
-## 🛠️ Installazione e Avvio
+##  Installazione e Avvio
 
 ### Prerequisiti
 - Node.js (versione 14 o superiore)
@@ -92,9 +92,9 @@ snippy/
 4. **Apri il browser**
    L'applicazione sarà disponibile su `http://localhost:3000`
 
-## 📖 Come Usare Snippi
+##  Come Usare Snippi
 
-### ➕ Aggiungere un Nuovo Snippet
+###  Aggiungere un Nuovo Snippet
 1. Clicca sul pulsante **"Nuovo Snippet"** nell'header
 2. Compila i campi richiesti:
    - **Nome/Descrizione**: Titolo descrittivo del tuo snippet
@@ -103,27 +103,27 @@ snippy/
    - **Codice**: Incolla o scrivi il tuo codice
 3. Clicca **"Salva Snippet"**
 
-### 🔍 Cercare Snippet
+###  Cercare Snippet
 - Usa la **barra di ricerca** per cercare per nome, codice o tag
 - Seleziona un **linguaggio specifico** dal dropdown
 - Filtra per **tag** usando il selettore dedicato
 - **Rimuovi filtri** cliccando sulla "x" nei tag attivi o su "Azzera tutti i filtri"
 
-### ✏️ Modificare uno Snippet
+###  Modificare uno Snippet
 1. Clicca sull'icona **"Modifica"** (matita) sulla card dello snippet
 2. Modifica i campi desiderati nel modal
 3. Clicca **"Aggiorna Snippet"**
 
-### 📋 Copiare il Codice
+###  Copiare il Codice
 - Clicca sull'icona **"Copia"** sulla card dello snippet
 - Il codice verrà copiato negli appunti
 - L'icona diventerà verde per confermare l'operazione
 
-### 🗑️ Eliminare uno Snippet
+###  Eliminare uno Snippet
 1. Clicca sull'icona **"Elimina"** (cestino) sulla card dello snippet
 2. Conferma l'eliminazione nel dialog di conferma
 
-## 🎨 Caratteristiche del Design
+##  Caratteristiche del Design
 
 ### Effetti Visivi
 - **Glassmorphism**: Effetti di vetro smerigliato sui modal e componenti
@@ -143,7 +143,7 @@ snippy/
 - **Breakpoints**: Adattamento automatico per tablet e desktop
 - **Touch Friendly**: Interfaccia ottimizzata per touch screen
 
-## 💾 Persistenza dei Dati
+##  Persistenza dei Dati
 
 Snippi utilizza il **localStorage** del browser per salvare i tuoi snippet. Questo significa:
 - **Nessun server richiesto**: Funziona completamente offline
