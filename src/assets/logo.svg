@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" className="w-full h-full">
+  <defs>
+    <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stopColor="#3b82f6" />
+      <stop offset="50%" stopColor="#8b5cf6" />
+      <stop offset="100%" stopColor="#06b6d4" />
+    </linearGradient>
+    <linearGradient id="codeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stopColor="#10b981" />
+      <stop offset="100%" stopColor="#3b82f6" />
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/> 
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background Circle -->
+  <circle cx="50" cy="50" r="45" fill="url(#logoGradient)" filter="url(#glow)" opacity="0.9"/>
+  
+  <!-- Code Brackets -->
+  <path d="M25 30 L15 40 L15 50 L15 60 L25 70" stroke="#ffffff" strokeWidth="3" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
+  <path d="M75 30 L85 40 L85 50 L85 60 L75 70" stroke="#ffffff" strokeWidth="3" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
+  
+  <!-- Central Code Symbol -->
+  <rect x="35" y="35" width="30" height="4" rx="2" fill="url(#codeGradient)"/>
+  <rect x="35" y="45" width="20" height="4" rx="2" fill="url(#codeGradient)"/>
+  <rect x="35" y="55" width="25" height="4" rx="2" fill="url(#codeGradient)"/>
+  
+  <!-- Decorative Dots -->
+  <circle cx="70" cy="42" r="2" fill="#fbbf24"/>
+  <circle cx="70" cy="52" r="2" fill="#f59e0b"/>
+  <circle cx="70" cy="62" r="2" fill="#d97706"/>
+  
+  <!-- Snippet Icon -->
+  <path d="M40 25 L45 20 L55 20 L60 25 L60 30 L40 30 Z" fill="#ffffff" opacity="0.8"/>
+  <rect x="42" y="22" width="2" height="6" fill="url(#logoGradient)"/>
+  <rect x="46" y="22" width="2" height="6" fill="url(#logoGradient)"/>
+  <rect x="50" y="22" width="2" height="6" fill="url(#logoGradient)"/>
+  <rect x="54" y="22" width="2" height="6" fill="url(#logoGradient)"/>
+</svg>

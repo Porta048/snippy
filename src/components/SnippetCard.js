@@ -18,7 +18,7 @@ const SnippetCard = ({ snippet, onCopy, onEdit, onDelete, isCopied }) => {
   };
 
   return (
-    <div className="snippet-card bg-gray-900 border border-gray-800 rounded-lg overflow-hidden hover:border-gray-700 transition-all">
+    <div className="snippet-card bg-gray-900 border border-gray-800 rounded-lg overflow-hidden hover:border-gray-700 hover:shadow-lg hover:shadow-blue-500/10 hover:-translate-y-1 transition-all duration-300 group">
       <div className="p-3">
         <div className="flex items-start justify-between mb-2">
           <h3 className="text-base font-semibold text-gray-100 truncate flex-1">
@@ -27,7 +27,7 @@ const SnippetCard = ({ snippet, onCopy, onEdit, onDelete, isCopied }) => {
           <div className="flex items-center space-x-1.5 ml-2">
             <button
               onClick={() => onCopy(snippet)}
-              className="p-1 text-gray-400 hover:text-blue-400 transition-colors"
+              className="p-1 text-gray-400 hover:text-blue-400 hover:scale-110 transition-all duration-200 rounded hover:bg-blue-500/10"
               title="Copia codice"
             >
               {isCopied ? (
@@ -42,7 +42,7 @@ const SnippetCard = ({ snippet, onCopy, onEdit, onDelete, isCopied }) => {
             </button>
             <button
               onClick={() => onEdit(snippet)}
-              className="p-1 text-gray-400 hover:text-blue-400 transition-colors"
+              className="p-1 text-gray-400 hover:text-blue-400 hover:scale-110 transition-all duration-200 rounded hover:bg-blue-500/10"
               title="Modifica"
             >
               <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -51,7 +51,7 @@ const SnippetCard = ({ snippet, onCopy, onEdit, onDelete, isCopied }) => {
             </button>
             <button
               onClick={() => onDelete(snippet.id)}
-              className="p-1 text-gray-400 hover:text-red-400 transition-colors"
+              className="p-1 text-gray-400 hover:text-red-400 hover:scale-110 transition-all duration-200 rounded hover:bg-red-500/10"
               title="Elimina"
             >
               <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

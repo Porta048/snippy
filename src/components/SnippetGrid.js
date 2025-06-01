@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import SnippetCard from './SnippetCard';
 
 const SnippetGrid = ({ snippets, onEdit, onDelete }) => {
   const [copiedId, setCopiedId] = useState(null);
@@ -28,15 +29,23 @@ const SnippetGrid = ({ snippets, onEdit, onDelete }) => {
   return (
     <div className="max-w-7xl mx-auto px-4 pb-8">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {snippets.map(snippet => (
-          <SnippetCard
+        {snippets.map((snippet, index) => (
+          <div
             key={snippet.id}
-            snippet={snippet}
-            onCopy={handleCopy}
-            onEdit={onEdit}
-            onDelete={onDelete}
-            isCopied={copiedId === snippet.id}
-          />
+            className="animate-fade-in-up"
+            style={{
+              animationDelay: `${index * 100}ms`,
+              animationFillMode: 'both'
+            }}
+          >
+            <SnippetCard
+              snippet={snippet}
+              onCopy={handleCopy}
+              onEdit={onEdit}
+              onDelete={onDelete}
+              isCopied={copiedId === snippet.id}
+            />
+          </div>
         ))}
       </div>
     </div>
